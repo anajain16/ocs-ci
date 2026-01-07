@@ -714,6 +714,7 @@ CSI_RBDPLUGIN_PROVISIONER_LABEL_419 = (
 )
 CSI_CEPHFSPLUGIN_LABEL_419 = "app=openshift-storage.cephfs.csi.ceph.com-nodeplugin"
 CSI_RBDPLUGIN_LABEL_419 = "app=openshift-storage.rbd.csi.ceph.com-nodeplugin"
+BLACKBOX_POD_LABEL = "app.kubernetes.io/name=odf-blackbox-exporter"
 # ODF 4.20+ CSI Addon pod labels - these pods contain the csi-addons containers
 CSI_RBD_ADDON_NODEPLUGIN_LABEL_420 = (
     "app=openshift-storage.rbd.csi.ceph.com-nodeplugin-csi-addons"
