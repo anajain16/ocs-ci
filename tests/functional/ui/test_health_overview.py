@@ -615,9 +615,7 @@ class TestHealthOverview(ManageTest):
             api = PrometheusAPI(threading_lock=threading_lock)
             api.refresh_connection()
             alerts = api.wait_for_alert(name=alert_name, state="firing", sleep=60)
-            assert (
-                len(alerts) > 0
-            ), f"Alert {alert_name} is not in firing state after unsilencing"
+            assert len(alerts) > 0, f"Alert {alert_name} is not in firing state"
             logger.info(f"Alert {alert_name} confirmed in firing state")
         self.update_alert_map(threading_lock)
         logger.info("Silence all pre-existing alerts")
