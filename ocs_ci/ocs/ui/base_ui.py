@@ -37,7 +37,7 @@ from ocs_ci.ocs.exceptions import (
     NotSupportedProxyConfiguration,
 )
 from ocs_ci.ocs.ocp import get_ocp_url
-from ocs_ci.ocs.ui.views import locators_for_current_ocp_version
+from ocs_ci.ocs.ui.views import locators_for_current_ocp_version, login as login_view
 from ocs_ci.ocs.ui.llm_tools.locator_fallback import LocatorFallback
 from ocs_ci.utility.templating import Templating
 from ocs_ci.utility.retry import retry
@@ -1395,6 +1395,9 @@ def login_ui(console_url=None, username=None, password=None, otp_secret=None, **
     password_el.send_keys(password)
 
     logger.info("Username and password filled in, clicking Log in")
+    if config.ENV_DATA.get("platform", "").lower() == constants.ROSA_HCP_PLATFORM:
+        login_loc["click_login"] = login_view["click_login"]
+
     # Client clusters have OAuth-based login with different button structure
     is_client_cluster = (
         config.ENV_DATA.get("cluster_type", "").lower() == constants.HCI_CLIENT
