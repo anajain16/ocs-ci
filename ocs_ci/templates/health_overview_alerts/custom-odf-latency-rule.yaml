@@ -14,7 +14,7 @@ spec:
       annotations:
         description: Node {{ $labels.instance }} has max ICMP RTT latency > 5ms over the last 1min. This may impact Ceph performance.
         runbook_url: https://github.com/openshift/runbooks/blob/master/alerts/openshift-container-storage-operator/ODFNodeLatencyHighOnOSDNodes.md
-        summary: High ICMP latency (>1ms) detected on ODF OSD node(s)
+        summary: High ICMP latency (>5ms) detected on ODF OSD node(s)
       expr: |
         count(
              max_over_time(
